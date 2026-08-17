@@ -1,3 +1,14 @@
-- url: https://health.google.com/covid-19/open-data/explorer/statistics
-  output: shot.png
-  height: 800
+on:
+  schedule:
+    # 05:00 UTC = 10:00 AM GMT+5
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Allows manual triggers from the Actions tab
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Take screenshot
+        url: https://health.google.com/covid-19/open-data/explorer/statistics
+        output: shot.png
+        height: 800
